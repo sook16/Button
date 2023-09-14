@@ -1,70 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Do not Touch</title>
+    <title>Do not Touch </title>
 </head>
 <body>
-    <img id="redImage" src="button.png" alt="빨간 이미지">
+    <img id="redImage" src="./image/button.png" alt="빨간 이미지">
     <p id="displayText">클릭 횟수: 0</p>
-
-    <!-- 사운드 파일 추가 -->
-    <audio id="buttonSound" src="button-click.mp3"></audio>
+    <audio id="buttonSound" src="./image/bom.wav"></audio>
 
     <script>
-        // 이미지 클릭 상태를 저장할 변수
-        let isImageClicked = false;
 
-        // 이미지 클릭 횟수를 저장할 변수
+        let isImageClicked = false;
         let clickCount = 0;
 
-        // 이미지 요소를 가져오기
-        const redImage = document.getElementById("redImage");
 
-        // 텍스트를 표시할 요소 가져오기
-        const displayText = document.getElementById("displayText");
 
-        // 사운드 요소 가져오기
-        const buttonSound = document.getElementById("buttonSound");
-
-        // 이미지 클릭 이벤트 핸들러 함수
         redImage.addEventListener("mousedown", function() {
-            // 이미지를 클릭하면 임시로 이미지 변경
             if (!isImageClicked) {
-                redImage.src = "button2.png"; // 새로운 이미지 경로로 변경
-                redImage.alt = "클릭 중...";   // 이미지의 대체 텍스트 업데이트
-                isImageClicked = true;
-            }
+                redImage.src = "./image/button2.png"; 
+                redImage.alt = "클릭 중...";   
+                isImageClicked = true;}
         });
 
-        // 이미지 마우스 클릭 해제 이벤트 핸들러 함수
+
         redImage.addEventListener("mouseup", function() {
-            // 마우스 클릭을 해제하면 다시 원래 이미지로 변경
             if (isImageClicked) {
-                redImage.src = "button.png";     // 원래 이미지 경로로 변경
-                redImage.alt = "빨간 이미지";    // 이미지의 대체 텍스트 업데이트
+                redImage.src = "./image/button.png";     
+                redImage.alt = "빨간 이미지";   
                 isImageClicked = false;
             }
             
-            // 클릭 횟수 증가
-            clickCount++;
-
-            // 텍스트 업데이트
+      
+            clickCount++;    
             displayText.textContent = `클릭 횟수: ${clickCount}`;
-
-            // 클릭 횟수가 3번이 되면 에러 창 표시
             if (clickCount === 3) {
                 try {
-                    // 에러 발생 (이 부분에서 예외를 발생시킵니다.)
+        
                     nonexistentFunction();
                 } catch (error) {
-                    // 에러 메시지 표시
+    
                     alert("누르지 말라니까요: " + error.message);
+
+
+                    buttonSound.play();
                     
-                    // 지정된 이미지로 이동 (예시: 구글 이미지 페이지)
-                    window.location.href = "Boom.png";
+
+                    window.location.href = "./image/Boom.png";
                 }
             }
         });
     </script>
 </body>
 </html>
+
